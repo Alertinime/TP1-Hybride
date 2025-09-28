@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+      base-uri 'self';
+      object-src 'none';
+      frame-ancestors 'none';
+      script-src 'self' 'unsafe-eval' gap: cdvfile:;
+      style-src  'self' 'unsafe-inline';
+      img-src    'self' data: blob: file: content: cdvfile: https://tyradex.vercel.app https://raw.githubusercontent.com;
+      connect-src 'self' https://tyradex.vercel.app https://raw.githubusercontent.com;
+      font-src   'self' data:;
+      media-src  'self' data: blob: file: content: cdvfile:;
+    ">
+  <title>PokéQuiz</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.poke.css" />
+</head>
+<body>
+  <noscript>Enable JavaScript to use the app.</noscript>
+
+  <div id="app" role="application" aria-label="PokéQuiz">
+
+    <!-- HOME -->
+    <section id="screen-home" class="screen active">
+      <div class="container">
+        <div class="header card">
+          <h1 class="title">PokéQuiz</h1>
+          <p class="subtitle">“Who’s that Pokémon?” — Guess 10 and set a record!</p>
+        </div>
+
+        <!-- Poké Ball CTA -->
+        <div class="poke-ball-cta">
+          <button id="btn-start" class="btn poke-top" type="button">Start the Quiz!</button>
+          <button id="btn-leaderboard" class="btn poke-bottom" type="button">View Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="screen-quiz" class="screen" aria-labelledby="quiz-title">
+      <div class="container card">
+        <h2 id="quiz-title" class="sr-only">Quiz</h2>
+        <div class="quiz-top" aria-live="polite">
+          <span class="badge">Question <span id="count">1/10</span></span>
+          <span class="badge timer" id="timer">00:00</span>
+        </div>
+        <img id="poke-img" alt="Who’s that Pokémon?" referrerpolicy="no-referrer" />
+        <form id="answer-form" autocomplete="off" novalidate>
+          <label for="answer" class="sr-only">Pokémon name</label>
+          <input id="answer" placeholder="Pokémon name" />
+          <button type="submit" class="btn btn-primary mt">Catch it!</button>
+        </form>
+        <div id="feedback" aria-live="polite"></div>
+        <button id="btn-skip" class="btn mt" type="button">Next Battle ▶</button>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screen-result" class="screen" aria-labelledby="result-title">
+      <div class="container card">
+        <h2 id="result-title">Final Result</h2>
+        <p id="final-score">Score: 0/10</p>
+        <p id="final-time">Time: 00:00</p>
+        <input id="player-name" placeholder="Trainer Name" maxlength="30" autocomplete="off" />
+        <button id="btn-save" class="btn btn-primary mt" type="button">Save Record</button>
+        <button id="btn-go-leaderboard" class="btn mt" type="button">View Leaderboard</button>
+        <button id="btn-home-1" class="btn mt" type="button">Home</button>
+      </div>
+    </section>
+
+    <!-- LEADERBOARD -->
+    <section id="screen-leaderboard" class="screen" aria-labelledby="leader-title">
+      <div class="container card">
+        <h2 id="leader-title">Top 5 Trainers</h2>
+        <ol id="leader-list"></ol>
+        <button id="btn-home-2" class="btn mt" type="button">Home</button>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="cordova.js" defer></script>
+  <script src="app.js" defer></script>
+</body>
+</html>

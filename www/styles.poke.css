@@ -1,0 +1,70 @@
+:root{
+  --poke-red:#e3350d;
+  --poke-red-dark:#b42a0b;
+  --poke-blue:#2a75bb;
+  --black:#1f2937;
+  --bg:#f7f7fb;
+  --text:#0f172a;
+  --card:#ffffff;
+  --border:#e2e8f0;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial}
+.container{max-width:520px;margin:0 auto;padding:16px}
+
+/* Header simple */
+.header{
+  position:relative;
+  border-radius:18px;
+  padding:16px 16px 16px 20px;
+  background:linear-gradient(135deg,var(--poke-red) 0%, #ff6b6b 40%, #ffcb05 140%);
+  color:#111827;
+  box-shadow:0 10px 24px rgba(227,53,13,.25);
+  border:3px solid #11182710;
+}
+.header::before,.header::after{content:none !important;display:none !important}
+
+/* Cards */
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(2,6,23,.06)}
+
+/* --- Poké Ball CTA --- */
+.poke-ball-cta{
+  position:relative;
+  width:240px;height:240px;
+  margin:32px auto 8px;
+  border-radius:50%;
+  overflow:hidden;
+  box-shadow:0 0 0 4px var(--black);
+}
+.poke-ball-cta .btn{
+  position:absolute;left:0;width:100%;height:50%;
+  margin:0;border-radius:0;border:none;z-index:2;
+  font-weight:900;display:flex;align-items:center;justify-content:center;
+}
+.poke-ball-cta .poke-top{top:0;background:var(--poke-red);color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.25)}
+.poke-ball-cta .poke-bottom{bottom:0;background:#fff;color:#111}
+
+/* Bande noire */
+.poke-ball-cta::before{
+  content:"";
+  position:absolute;left:0;right:0;top:50%;
+  height:10px;transform:translateY(-50%);
+  background:var(--black);
+  z-index:1;pointer-events:none;
+}
+/* Cercle central réduit */
+.poke-ball-cta::after{
+  content:"";
+  position:absolute;left:50%;top:50%;
+  transform:translate(-50%,-50%);
+  width:36px;height:36px;border-radius:50%;
+  background:#fff;border:6px solid var(--black);
+  z-index:1;pointer-events:none;
+}
+
+/* Quiz image */
+#poke-img{width:100%;max-height:320px;object-fit:contain;filter:grayscale(100%) contrast(120%);border-radius:16px;border:2px dashed #e5e7eb;background:#fff}
+
+/* Generic buttons */
+.btn-primary{background:var(--poke-red);color:#fff;box-shadow:0 10px 20px rgba(227,53,13,.28)}
+.btn-primary:hover{background:var(--poke-red-dark)}
